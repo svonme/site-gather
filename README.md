@@ -25,14 +25,14 @@ const gather = require('@fengqiaogang/site-gather');
 
 | 字段 | 类型 | 是否比填 | 默认值 | 说明 |
 | --   | --  |--       | --   | -- |
-| name | String | 否 ｜ Null | 项目名称 |
-| id | String | 否 ｜ Null | 项目 ID |
-| secret | String | 否 ｜ Null | 项目密钥 |
-| server_url | String | 是 ｜ - | 数据上报地址 |
-| track | String | 是 ｜ "/site/track" | 事件上报路径 |
-| open | String | 否 ｜ "/site/open" | 页面响应上报路径 |
-| visit | String | 否 ｜ "/site/visit" | 页面停留上报路径 |
-| close | String | 否 ｜ "/site/close" | 页面关闭上报路径 |
+| name | String | 否 | Null | 项目名称 |
+| id | String | 否 | Null | 项目 ID |
+| secret | String | 否 | Null | 项目密钥 |
+| server_url | String | 是 | - | 数据上报地址 |
+| track | String | 是 | "/site/track" | 事件上报路径 |
+| open | String | 否 | "/site/open" | 页面响应上报路径 |
+| visit | String | 否 | "/site/visit" | 页面停留上报路径 |
+| close | String | 否 | "/site/close" | 页面关闭上报路径 |
 
 #### 配置用户信息
 
@@ -79,5 +79,5 @@ const gather = require('@fengqiaogang/site-gather');
 
 | 字段 | 类型 | 是否比填 | 默认值 | 说明 |
 | --   | --  |--       | --   | -- |
-| EventName | String | 是 ｜ - | 事件名称 |
-| EventData | Object | 否 ｜ Null | 事件参数 |
+| EventName | String | 是 | - | 事件名称 |
+| EventData | Object | 否 | Null | 事件参数 |
