@@ -12,13 +12,15 @@
 
 ```
 const gather = require('@fengqiaogang/site-gather');
-
+```
+```
+import gather from '@fengqiaogang/site-gather';
 ```
 
 ### 配置初始化参数
 
 ```
-  gather.setOption(Option);
+gather.setOption(Option);
 ```
 
 #### Option [setOption方法参数]
@@ -37,10 +39,10 @@ const gather = require('@fengqiaogang/site-gather');
 #### 配置用户信息
 
 ```
-  /*
-   * @param {String} UserId 用户ID
-   */
-  gather.setUserId(UserId);
+/*
+  * @param {String} UserId 用户ID
+  */
+gather.setUserId(UserId);
 ```
 
 未设置 UserId 时，监测程序则不会执行
@@ -48,31 +50,31 @@ const gather = require('@fengqiaogang/site-gather');
 #### 配置全局事件公共参数 [非必须]
 
 ```
-  /*
-   * @param {Object} Option 公共参数
-   */
-  gather.setProfile(Option);
+/*
+  * @param {Object} Option 公共参数
+  */
+gather.setProfile(Option);
 ```
 
 
 #### track 执行埋点
 
 ```
-  gather.track(EventName, EventData);
+gather.track(EventName, EventData);
+// todo
+```
+
+```
+gather.track(EventName, EventData, function() {
   // todo
+});
 ```
 
 ```
-  gather.track(EventName, EventData, function() {
-    // todo
-  });
-```
-
-```
-  async function() {
-    await gather.track(EventName, EventData);
-    // todo
-  }
+async function() {
+  await gather.track(EventName, EventData);
+  // todo
+}
 ```
 
 如需同步执行（事件埋点执行完后在执行其它逻辑）可使用 CallBack 或者 async/await 两种方式
