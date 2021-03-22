@@ -1,0 +1,21 @@
+{
+  "name": "site-gather",
+  "version": "1.0.0",
+  "description": "站点监测",
+  "keywords": ["site-gather"],
+  "main": "src/index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svonme/site-gather.git"
+  },
+  "author": "svon.me@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svonme/site-gather/issues"
+  },
+  "homepage": "https://github.com/svonme/site-gather#readme",
+  "dependencies": {
+  }
+}
