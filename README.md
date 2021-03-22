@@ -4,17 +4,17 @@
 
 ### Install
 
-`$ yarn add @fengqiaogang/site-gather`
-`$ npm install @fengqiaogang/site-gather`
+`$ yarn add site-gather`
+`$ npm install site-gather`
 
 
 ### 引入 SDK
 
 ```
-const gather = require('@fengqiaogang/site-gather');
+const gather = require('site-gather');
 ```
 ```
-import gather from '@fengqiaogang/site-gather';
+import gather from 'site-gather';
 ```
 
 ### 配置初始化参数
@@ -56,7 +56,6 @@ gather.setUserId(UserId);
 gather.setProfile(Option);
 ```
 
-
 #### track 执行埋点
 
 ```
@@ -83,3 +82,42 @@ async function() {
 | --   | --  |--       | --   | -- |
 | EventName | String | 是 | - | 事件名称 |
 | EventData | Object | 否 | Null | 事件参数 |
+
+#### 小程序配置
+
+在 app.json 配置全局组件
+
+```
+{
+  ...
+  usingComponents: {
+    "gather": "site-gather/gather"
+  }
+}
+```
+
+#### 数据采集
+在需要数据采集的页面中配置
+
+html 标签模式
+```
+<view>
+  <gather/>
+</view>
+```
+
+javascript 自行配置 （推荐 html 模式）
+```
+
+const gather = require('site-gather');
+
+Page({
+  onLoad() {
+    gather.open(); // 页面打开
+  },
+  // 可通过停留监测来计算页面销毁时间
+  onUnload () {
+    gather.close(); // 页面销毁
+  }
+})
+```

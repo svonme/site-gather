@@ -1,5 +1,6 @@
 
-const gather = require('../src/index');
+const _ = require('./lodash');
+const gather = require('./index');
 
 Component({
   /**
@@ -12,7 +13,10 @@ Component({
   data: {
   },
   ready () {
-    gather.open();
+    gather.open(); // 页面加载
+  },
+  detached () {
+    gather.close(); // 页面销毁
   },
   /**
    * 组件的方法列表

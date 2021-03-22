@@ -1,9 +1,10 @@
 {
   "name": "site-gather",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "站点监测",
   "keywords": ["site-gather"],
   "main": "src/index.js",
+  "miniprogram": "src",
   "scripts": {
   },
   "repository": {
