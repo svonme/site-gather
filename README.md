@@ -115,11 +115,22 @@ const gather = require('site-gather');
 
 Page({
   onLoad() {
-    gather.open(); // 页面打开
+    gather.pageOpen(); // 页面打开
   },
   // 可通过停留监测来计算页面销毁时间
   onUnload () {
-    gather.close(); // 页面销毁
+    gather.pageClose(); // 页面销毁
   }
 })
+```
+
+#### 监听 App 打开
+
+```
+gather.appOpen()
+```
+#### 监听 App 退出
+
+```
+gather.appClose();
 ```
