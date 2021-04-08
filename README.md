@@ -27,9 +27,9 @@ gather.setOption(Option);
 
 | 字段 | 类型 | 是否比填 | 默认值 | 说明 |
 | --   | --  |--       | --   | -- |
-| name | String | 否 | Null | 项目名称 |
-| id | String | 否 | Null | 项目 ID |
-| secret | String | 否 | Null | 项目密钥 |
+| appname | String | 否 | Null | 项目名称 |
+| appid | String | 否 | Null | 项目 ID |
+| appkey | String | 否 | Null | 项目密钥 |
 | server_url | String | 是 | - | 数据上报地址 |
 | track | String | 否 | "/site/track" | 事件上报路径 |
 | open | String | 否 | "/site/open" | 页面响应上报路径 |

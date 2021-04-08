@@ -5,21 +5,23 @@ const http = require('./network');
 
 
 const globalOption = {
-  'name': '',      // app name
-  'id': '',        // app id
-  'secret': '',    // app secret
-  'server_url': '',// 数据上报地址
-  'userid': '',    // 用户id
+  'appname': '',      // app name
+  'appid': '',        // app id
+  'appkey': '',       // app secret
+  'userId': '',       // 用户id
+  'server_url': '',   // 数据上报地址
+  
   'track': '/site/event', // 事件上报路径
   'open': '/site/open',   // 页面响应上报路径
   'visit': '/site/visit', // 页面停留上报路径
   'close': '/site/close', // 页面关闭上报路径
-  'profile': {}, // 其它的公共数据
+  
+  'profile': {},      // 其它的公共数据
 };
 
 // 配置全局数据
 const setOption = function(option) {
-  const keys = [ 'name', 'id', 'secret', 'server_url', 'track', 'open', 'visit', 'close' ];
+  const keys = [ 'appname', 'appid', 'appkey', 'server_url', 'track', 'open', 'visit', 'close' ];
   const data = _.pick(option, keys);
   _.each(data, function(value, key) {
     if (value) {
@@ -37,12 +39,13 @@ const setUserId = function(userid) {
 // 设置公共属性
 const setProfile = function(profile) {
   if (_.isObject(profile)) {
-    globalOption['profile'] = profile;
+    // 公共数据合并
+    Object.assign(globalOption['profile'], profile);
   }
 }
 
 const send = function(url, option, callback) {
-  const basis = _.pick(globalOption, ['name', 'id', 'secret', 'userid']);
+  const basis = _.pick(globalOption, ['appname', 'appid', 'appkey', 'userid']);
   const data = Object.assign({}, basis, option);
   http.network(url, data).then(function() {
     if (_.isFunction(callback)) {
@@ -121,4 +124,11 @@ const track = function(clickName, data, callback) {
   }
 }
 
-module.exports = { setOption, setUserId, setProfile, track, open, close };
+module.exports = { 
+  setOption: setOption, 
+  setUserId: setUserId, 
+  setProfile: setProfile, 
+  track: track, 
+  open: open, 
+  close: close
+};

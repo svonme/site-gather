@@ -1,6 +1,6 @@
 {
   "name": "site-gather",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "站点监测",
   "keywords": ["site-gather"],
   "main": "src/index.js",

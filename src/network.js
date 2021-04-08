@@ -22,7 +22,9 @@ const query = function(data) {
       });
       return util.getSystemInfo();
     }).then(function(info) {
-      Object.assign(option, info);
+      Object.assign(option, info, {
+        scene: util.getScene() // 来源
+      });
     }).then(function() {
       resolve(option);
     }).catch(function(e){

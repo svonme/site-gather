@@ -8,6 +8,19 @@ const getLocation = function() {
   return route;
 }
 
+// 小程序打开方式（来源）
+const getScene = function() {
+  try {
+    const first = getCurrentPages()[0];
+    const reporter = first['__displayReporter'] || {};
+    const options = reporter['showOptions'] || {};
+    const scene = options['scene'] || '';
+    return scene;
+  } catch (error) {
+    return '';
+  }
+}
+
 const nodeKey = '__wxExparserNodeId__';
 
 const hasNodeId = function(id) {
@@ -50,14 +63,21 @@ const getSystemInfo = function() {
       },
       success: function(data) {
         resolve({
-          brand: data.brand,
-          model: data.model,
-          system: data.system,
-          version: data.version,
+          brand: data.brand, // 设备品牌
+          model: data.model, // 设备型号
+          os: data.system,   // 操作系统
+          osv: data.version, // 操作系统版本
         });
       }
     });
   });
 }
 
-module.exports = { getNetWork, getLocation, getSystemInfo, getNodeId, hasNodeId }
+module.exports = { 
+  getScene: getScene, 
+  getNetWork: getNetWork,
+  getLocation: getLocation, 
+  getSystemInfo: getSystemInfo, 
+  getNodeId: getNodeId, 
+  hasNodeId: hasNodeId
+}

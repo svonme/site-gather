@@ -1,5 +1,4 @@
 
-const _ = require('./lodash');
 const gather = require('./index');
 
 Component({

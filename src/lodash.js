@@ -159,7 +159,22 @@ const pick = function(data, keys) {
   return obj;
 };
 
-module.exports = { isArray, isObject, isString, isFunction, flatten, has, includes, omit, pick, first, last, size, each, some };
+module.exports = { 
+  isArray: isArray, 
+  isObject: isObject, 
+  isString: isString, 
+  isFunction: isFunction, 
+  flatten: flatten, 
+  has: has, 
+  includes: includes, 
+  omit: omit, 
+  pick: pick, 
+  first: first, 
+  last: last, 
+  size: size, 
+  each: each, 
+  some: some
+};
 
 
 
