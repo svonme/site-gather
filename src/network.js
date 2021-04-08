@@ -16,10 +16,20 @@ const query = function(data) {
       option['network'] = netWorkType;
       return util.getLocation();
     }).then(function(location) {
-      Object.assign(option, {
-        pathname: location.route,
-        search: JSON.stringify(location.options)
-      });
+      const opt = {
+        pagename: location.route,
+        search: ''
+      };
+      if (location.options) {
+        const search = {};
+        for(const key in location.options) {
+          if (key) {
+            search[key] = location.options[key];
+          }
+        }
+        opt.search = JSON.stringify(search);
+      }
+      Object.assign(option, opt);
       return util.getSystemInfo();
     }).then(function(info) {
       Object.assign(option, info, {
