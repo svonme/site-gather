@@ -4,8 +4,11 @@
 
 ### Install
 
-`$ yarn add site-gather`
-`$ npm install site-gather`
+```
+$ yarn add site-gather
+
+$ npm install site-gather
+```
 
 
 ### 引入 SDK
