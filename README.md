@@ -31,10 +31,12 @@ gather.setOption(Option);
 | appid | String | 否 | Null | 项目 ID |
 | appkey | String | 否 | Null | 项目密钥 |
 | server_url | String | 是 | - | 数据上报地址 |
-| track | String | 否 | "/site/track" | 事件上报路径 |
-| open | String | 否 | "/site/open" | 页面响应上报路径 |
-| visit | String | 否 | "/site/visit" | 页面停留上报路径 |
-| close | String | 否 | "/site/close" | 页面关闭上报路径 |
+| track | String | 否 | "/app/track" | 事件上报路径 |
+| appopen | String | 否 | "/app/open" | app 响应上报路径 |
+| appclose | String | 否 | "/app/close" | app 关闭上报路径 |
+| pageopen | String | 否 | "/app/page/open" | 页面响应上报路径 |
+| pageclose | String | 否 | "/app/page/close" | 页面关闭上报路径 |
+
 
 #### 配置用户信息
 

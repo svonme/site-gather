@@ -12,10 +12,10 @@ Component({
   data: {
   },
   ready () {
-    gather.open(); // 页面加载
+    gather.pageOpen(); // 页面加载
   },
   detached () {
-    gather.close(); // 页面销毁
+    gather.pageClose(); // 页面销毁
   },
   /**
    * 组件的方法列表

@@ -12,16 +12,17 @@ const globalOption = {
   'server_url': '',   // 数据上报地址
   
   'track': '/site/event', // 事件上报路径
-  'open': '/site/open',   // 页面响应上报路径
-  'visit': '/site/visit', // 页面停留上报路径
-  'close': '/site/close', // 页面关闭上报路径
+  'appopen': '/app/open',   // app 打开上报路径
+  'appclose': '/app/close', // app 关闭上报路径
+  'pageopen': '/app/page/open',   // 页面响应上报路径
+  'pageclose': '/app/apge/close', // 页面关闭上报路径
   
   'profile': {},      // 其它的公共数据
 };
 
 // 配置全局数据
 const setOption = function(option) {
-  const keys = [ 'appname', 'appid', 'appkey', 'server_url', 'track', 'open', 'visit', 'close' ];
+  const keys = [ 'appname', 'appid', 'appkey', 'server_url', 'track', 'appopen', 'appclose', 'pageopen', 'pageclose'];
   const data = _.pick(option, keys);
   _.each(data, function(value, key) {
     if (value) {
@@ -56,34 +57,18 @@ const send = function(url, option, callback) {
   });
 }
 
-const visitTime = 1000 * 5;
-
-const visit = function(nodeid) {
-  const option = {};
-  const url = globalOption.server_url + globalOption.visit;
-  send(url, option, function() {
-    if (util.hasNodeId(nodeid)) {
-      setTimeout(function() {
-        visit(nodeid);
-      }, visitTime);
-    }
-  });
-}
 
 // 页面打开
-const open = function(callback) {
+const appOpen = function(callback) {
   const option = {};
-  const id = util.getNodeId();
-  const url = globalOption.server_url + globalOption.open;
+  const url = globalOption.server_url + globalOption.appopen;
   if (callback) {
     send(url, option, function() {
-      setTimeout(function() { visit(id); }, visitTime);
       callback();
     });
   } else {
     return new Promise(function(resolve) {
       send(url, option, function() {
-        setTimeout(function() { visit(id); }, visitTime);
         resolve();
       });
     });
@@ -91,9 +76,39 @@ const open = function(callback) {
 }
 
 // 页面关闭
-const close = function(callback) {
+const appClose = function(callback) {
   const option = {};
-  const url = globalOption.server_url + globalOption.close;
+  const url = globalOption.server_url + globalOption.appclose;
+  if (callback) {
+    send(url, option, callback);
+  } else {
+    return new Promise(function(resolve) {
+      send(url, option, resolve);
+    });
+  }
+}
+
+// 页面打开
+const pageOpen = function(callback) {
+  const option = {};
+  const url = globalOption.server_url + globalOption.pageopen;
+  if (callback) {
+    send(url, option, function() {
+      callback();
+    });
+  } else {
+    return new Promise(function(resolve) {
+      send(url, option, function() {
+        resolve();
+      });
+    });
+  }
+}
+
+// 页面关闭
+const pageClose = function(callback) {
+  const option = {};
+  const url = globalOption.server_url + globalOption.pageclose;
   if (callback) {
     send(url, option, callback);
   } else {
@@ -129,6 +144,8 @@ module.exports = {
   setUserId: setUserId, 
   setProfile: setProfile, 
   track: track, 
-  open: open, 
-  close: close
+  appOpen: appOpen, 
+  appClose: appClose,
+  pageOpen: pageOpen,
+  pageClose: pageClose,
 };
